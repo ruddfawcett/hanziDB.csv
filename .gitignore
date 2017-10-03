@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# R stuff
+*.Rhistory
+*.Rapp.*
