@@ -19,9 +19,11 @@ def scrape_page(page_num):
     for row in table.findAll('tr'):
         entry = {}
         cells = row.findAll('td')
+
         if len(cells) == 8:
             radical = ''
             radical_code = ''
+
             if len(cells[3].findAll(text=True)) > 0:
                 radical = cells[3].findAll(text=True)[0]
                 radical_code = cells[3].findAll(text=True)[1].replace(u'\xa0', '')
@@ -46,8 +48,9 @@ def scrape_page(page_num):
 
 all_entries = []
 
-for page in range(100):
-    words_on_page = scrape_page(page)
+# There are 100 pages on the website.
+for page_num in range(100):
+    words_on_page = scrape_page(page_num)
     all_entries = all_entries + words_on_page
 
 hanzi_db = pd.DataFrame(all_entries, columns=all_entries[0].keys())
