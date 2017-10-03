@@ -36,7 +36,7 @@ def scrape_page(page_num):
                 'radical': radical,
                 'radical_code': radical_code,
                 'stroke_count': cells[4].find(text=True),
-                'hsk_levl': cells[5].find(text=True),
+                'hsk_level': cells[5].find(text=True),
                 'general_standard_num': cells[6].find(text=True)
             }
         else:
