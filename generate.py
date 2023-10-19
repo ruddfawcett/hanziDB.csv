@@ -24,20 +24,20 @@ def scrape_page(page_num):
             radical = ''
             radical_code = ''
 
-            if len(cells[3].findAll(text=True)) > 0:
-                radical = cells[3].findAll(text=True)[0]
-                radical_code = cells[3].findAll(text=True)[1].replace(u'\xa0', '')
+            if len(cells[3].findAll(string=True)) > 0:
+                radical = cells[3].findAll(string=True)[0]
+                radical_code = cells[3].findAll(string=True)[1].replace(u'\xa0', '')
 
             entry = {
-                'frequency_rank': cells[7].find(text=True),
-                'charcter': cells[0].find(text=True),
-                'pinyin': cells[1].find(text=True),
-                'definition': cells[2].find(text=True),
+                'frequency_rank': cells[7].find(string=True),
+                'character': cells[0].find(string=True),
+                'pinyin': cells[1].find(string=True),
+                'definition': cells[2].find(string=True),
                 'radical': radical,
                 'radical_code': radical_code,
-                'stroke_count': cells[4].find(text=True),
-                'hsk_level': cells[5].find(text=True),
-                'general_standard_num': cells[6].find(text=True)
+                'stroke_count': cells[4].find(string=True),
+                'hsk_level': cells[5].find(string=True),
+                'general_standard_num': cells[6].find(string=True)
             }
         else:
             continue
@@ -49,7 +49,7 @@ def scrape_page(page_num):
 all_entries = []
 
 # There are 100 pages on the website.
-for page_num in range(100):
+for page_num in range(1, 100):
     words_on_page = scrape_page(page_num)
     all_entries = all_entries + words_on_page
 
